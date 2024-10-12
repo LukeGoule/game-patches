@@ -56,3 +56,58 @@ hash = "B9BE89200A856E37" # default.xex
     [[patch.be32]]
         address = 0x826b94f8
         value = 0x39600001
+
+[[patch]]
+    name = "Disable traffic"
+    author = "LukeGoule"
+    is_enabled = false
+
+    # AmbientMgr::GetTrafficEnabled -> **param_1 = 0x0;
+    [[patch.be32]]
+        address = 0x826d5180
+        value = 0x39200000
+
+    # g_bIsTrafficEnabled -> 0x0
+    [[patch.be32]]
+        address = 0x8282a7c8
+        value = 0x00000000
+
+[[patch]]
+    name = "Disable peds"
+    author = "LukeGoule"
+    is_enabled = false
+
+    # AmbientMgr::GetPedsEnabled -> **param_1 = 0x0;
+    [[patch.be32]]
+        address = 0x826d5198
+        value = 0x39200000
+
+    # g_bIsPedsEnabled -> 0x0
+    [[patch.be32]]
+        address = 0x8282a7c9
+        value = 0x00000000
+
+[[patch]]
+    name = "Disable parked cars"
+    author = "LukeGoule"
+    is_enabled = false
+
+    # AmbientMgr::GetParkedCarsEnabled -> **param_1 = 0x0;
+    [[patch.be32]]
+        address = 0x826d51e8
+        value = 0x39200000
+
+    # g_bIsParkedCarsEnabled -> 0x0
+    [[patch.be32]]
+        address = 0x8282a7ca
+        value = 0x00000000
+
+[[patch]]
+    name = "Disable police"
+    author = "LukeGoule"
+    is_enabled = false
+    
+    # PoliceManager::CreatePolice -> blr
+    [[patch.be32]]
+        address = 0x82705450
+        value = 0x4e800020
